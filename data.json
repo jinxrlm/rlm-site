@@ -1,0 +1,418 @@
+{
+  "artists": [
+    {
+      "name": "Ingen Annan",
+      "image": "gfx/ia_artist_pic_8f4e.png",
+      "logo": "gfx/rlm_logo_ia_ad03.png",
+      "bio": "When life gives you lemons, Jay steals them and makes jungle. Written over the full year of 2024, the debut album from Ingen Annan surprised absolutely nobody and took no one by storm that December. But that was the floodgates opened, the creative flow now free, with the slightly mellowed Chillout Sessions I, and in 2026 the much delayed and bloated rebellion against music as an annoying parent - 2026s This Album Is Dum.\n\nYou might think it ends there, but you don't know about Breakbeat Sessions I or the third album already in its larval stage. Did I mention floodgates? 'Ingen Annan' is Swedish for 'No one else' or 'None other'.",
+      "genres": [
+        "jungle",
+        "drum and bass",
+        "breakbeat",
+        "breakcore"
+      ],
+      "socials": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/@IngenAnnan"
+        },
+        {
+          "platform": "BlueSky",
+          "url": "https://bsky.app/profile/ingen-annan.bsky.social"
+        }
+      ]
+    },
+    {
+      "name": "Jinx",
+      "image": "gfx/jinximg_3f12.png",
+      "logo": "gfx/rlm_logo_jinx_c8fc.png",
+      "bio": "Jay's original alter ego. Pretty much. Jinx started out making Gabber, Hardcore Techno & Jungle in the late 90s and early 00s. They found a home on mp3.com where they released several albums of questionable quality but some minor chart successes.\n\nAfter a long break between ca 2004 and 2010 they began to stretch their legs on YouTube, with a filterless deluge of everything from melodic and atmospheric folk to dubstep.\n\nAfter coalescing into a new more composed project they released the album Dreamcatcher in 2018, a project many years in the making. This album firmly sculpted Jinx into what it is today - a musical storytelling mechanic, using traditional music from around the world mixed with Swedish melancholy and modern electronic sounds. With the world doing its thing for a few years (you know who you are, 2020-2022!) it took the creation of multiple new, other projects to get Jinx fully creative again.\n\nWith the release of Lullabies For Earthquakes, Jinx again evolves the same idea of narrative sound into new directions. Work has slowly begun on the next stage: 'By Strange Airs Called, of Old Tongues Borne'.",
+      "genres": [
+        "dub",
+        "downtempo",
+        "world fusion",
+        "folk"
+      ],
+      "socials": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/@jinxrlm"
+        }
+      ]
+    },
+    {
+      "name": "Vadoro",
+      "image": "gfx/vaoro_artist_pic_62d1.png",
+      "logo": "gfx/rlm_logo_vadoro_3017.png",
+      "bio": "What might seem like an odd curve in the path to some was actually a predestined destination. In 2024 Jay was playing around with some old WIP tracks trying to find where they might fit. They stumbled into Amapiano (a style of house born out of South Africa and popularized all over Africa and Europe). As it turns out several tracks, some from as early as 2012, had the bones of proto-Amapiano in them already. Two more or less had a log drum, so this was... weird.\n\nTaking it as a sign to lean in, Jay birthed 'Vadoro' - which sounds like a word, and might even be - ọrọ̀ is a word in Yoruba - 'speech', 'va' and 'd'or' is 'go' and 'gold/en' in french, respectively. But the simplest explanation is the swedish phrase 'vadå då?' which sounds a bit like vadoro spoken fast, and means 'why are you asking?'. Kind of. Swedish is weird.\n\nThe first album Sonic Flow Part I arrived in June 2025, 14 tracks of genuine Afro-centric joy paired with Swedish melancholy. Part II, now released as of May 2026 lets the Flow continue. Up next is an EP in Swedish called 'Vi Talar Svenska!' with plenty of things worth waiting for. Stay tuned.",
+      "genres": [
+        "amapiano",
+        "afrobeat",
+        "pop",
+        "house"
+      ],
+      "socials": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/@vadoromusic"
+        },
+        {
+          "platform": "BlueSky",
+          "url": "https://bsky.app/profile/vadoro.bsky.social"
+        }
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "name": "Ingen Annan Mäktar",
+      "image": "gfx/cover_f418.png",
+      "artist": "Ingen Annan",
+      "type": "Album",
+      "streaming": [
+        {
+          "platform": "Bandcamp",
+          "url": "https://ingenannan.bandcamp.com/album/ingen-annan-m-ktar"
+        },
+        {
+          "platform": "Spotify",
+          "url": "https://open.spotify.com/album/3ySKY2Tzu4dGa90qMuFFlh"
+        },
+        {
+          "platform": "YouTube Music",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_lrkvbEqyV4yKa03RpX9DoDnJ8dtSlZ2S8"
+        },
+        {
+          "platform": "Apple Music",
+          "url": "https://music.apple.com/us/album/ingen-annan-m%C3%A4ktar/1788554842"
+        },
+        {
+          "platform": "Amazon Music",
+          "url": "https://music.amazon.com/albums/B0DS6B2KTJ"
+        },
+        {
+          "platform": "Tidal",
+          "url": "https://listen.tidal.com/album/538157527"
+        },
+        {
+          "platform": "Boomplay",
+          "url": "https://www.boomplay.com/albums/134639685"
+        },
+        {
+          "platform": "Pandora",
+          "url": "https://www.pandora.com/AL:67775834"
+        }
+      ],
+      "date": "2024-12-25",
+      "blurb": "Old becomes new.\n\nIngen Annan is a brand new project from a producer with over thirty years in the game. The resulting debut album Ingen Annan Mäktar (Swedish for \"No one else can\") is competent without the need for flash.\n\nThe 12 track album is properly put together - clean, heavy, and full of those classic break stops that hit like a punchline - but the tone is more often than not pure shit-stirring. It throws 90s jungle next to modern neuro, electroswing, ragga, big beat, breakcore and whatever else needed cooking that day. Tempos swing from half-time swagger at 65 bpm to full-pelt 194 bpm just because they can. Genres switch up for the bit, but it all works. Music and comedy share a common thread - both work best when serious craft is dressed up as a complete lack of it.\n\nBut seriously - there's a K-Pop track with hardcore techno kicks?? Kill it with fire. Or buy it on Bandcamp."
+    },
+    {
+      "name": "This Album Is Dum",
+      "image": "gfx/upload_0bf9df9862654791b0babaecf4f4e90e_2371.png",
+      "artist": "Ingen Annan",
+      "type": "Album",
+      "streaming": [
+        {
+          "platform": "Spotify",
+          "url": "https://open.spotify.com/album/1o2Zy0OblI4IuvPdUzJiND"
+        },
+        {
+          "platform": "Apple Music",
+          "url": "https://music.apple.com/us/album/this-album-is-dum/6785426280"
+        },
+        {
+          "platform": "Amazon Music",
+          "url": "https://music.amazon.com/albums/B0H6X6LXPK"
+        },
+        {
+          "platform": "QQ Music",
+          "url": "https://y.qq.com/n/ryqq_v2/albumDetail/96246775"
+        },
+        {
+          "platform": "Deezer",
+          "url": "https://www.deezer.com/album/1016971211"
+        },
+        {
+          "platform": "Tidal",
+          "url": "https://tidal.com/browse/album/538157527"
+        },
+        {
+          "platform": "YouTube Music",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_nA8PZ6MawwmxgS6acnhPYjw_F0NFgXtPI"
+        },
+        {
+          "platform": "Pandora",
+          "url": "https://www.pandora.com/AL:67775834"
+        },
+        {
+          "platform": "Boomplay",
+          "url": "https://www.boomplay.com/albums/134639685"
+        }
+      ],
+      "date": "2026-07-17",
+      "blurb": "The follow-up is often harder to make than the debut. In this case it was not only harder, but longer, faster, and deeper. Her loins still pounded with her heartbeat, her breath shallow and her cheeks flush. But this beast refused to stay down and her passion flared at the sight.\n\n*cough*\n\nThis Album Is Dum - twenty-one tracks structured like a late-night pirate broadcast: six interludes stitched between jungle anthems, rave weapons, pop moments, and genre hybrids that have no business working. Surf rock, 60s girl-group pop, Swedish folk, maqam scales, and whatever “actually listenable breakcore” is supposed to be - all of it gets pounded in the backroom with full consent.\n\nIt’s not a joke record that happens to be well-made. It’s a well-made record that refuses to stop joking.\n\nBack to the nineties.\nPlay more bassline."
+    },
+    {
+      "name": "Dreamcatcher",
+      "image": "gfx/cover_97d4.png",
+      "artist": "Jinx",
+      "type": "Album",
+      "streaming": [
+        {
+          "platform": "Spotify",
+          "url": "https://open.spotify.com/album/0ljf1j5QiK0mku1rq3wRTB"
+        },
+        {
+          "platform": "Apple Music",
+          "url": "https://music.apple.com/us/album/dreamcatcher/1794716007"
+        },
+        {
+          "platform": "Deezer",
+          "url": "https://www.deezer.com/album/708783301"
+        },
+        {
+          "platform": "Amazon Music",
+          "url": "https://music.amazon.com/albums/B0DW8HTXV9"
+        },
+        {
+          "platform": "QQ Music",
+          "url": "https://y.qq.com/n/ryqq_v2/albumDetail/62590705"
+        },
+        {
+          "platform": "YouTube Music",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_nUpN8WSgtu9noNgzlzn0iJ9qI1lRa3jNE"
+        },
+        {
+          "platform": "Boomplay",
+          "url": "https://www.boomplay.com/albums/106099451"
+        },
+        {
+          "platform": "Tidal",
+          "url": "https://listen.tidal.com/album/416160548"
+        },
+        {
+          "platform": "Pandora",
+          "url": "https://www.pandora.com/AL:44497947"
+        }
+      ],
+      "date": "2018-09-28",
+      "blurb": "The first full Jinx label release marks the beginning of something deliberately crafted. Twelve tracks, twelve scenes - each one built around a single visual and scored outward from there.\n\nDreamcatcher moves through Bollywood rhythms, Native American textures, Asian film scores, cavernous dub and slow shoegaze glitch without announcing the transitions. The geography shifts but the intent stays constant: melody as cinematography, sound as visual language.\n\nAll instrumental - no lyrics needed. The pictures are already there."
+    },
+    {
+      "name": "Lullabies For Earthquakes",
+      "image": "gfx/cover_70aa.png",
+      "artist": "Jinx",
+      "type": "Album",
+      "streaming": [
+        {
+          "platform": "Spotify",
+          "url": "https://open.spotify.com/album/7HUYFyBqfFN9HshqXboacF"
+        },
+        {
+          "platform": "Apple Music",
+          "url": "https://music.apple.com/us/album/lullabies-for-earthquakes/6780841839"
+        },
+        {
+          "platform": "Amazon Music",
+          "url": "https://music.amazon.com/albums/B0H5KFDRLR"
+        },
+        {
+          "platform": "Deezer",
+          "url": "https://www.deezer.com/album/1006890001"
+        },
+        {
+          "platform": "Tidal",
+          "url": "https://tidal.com/browse/album/533914888"
+        },
+        {
+          "platform": "YouTube Music",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_lRdi9mmFbbgiQzVV77QtdFDpA5VJYVmpo"
+        },
+        {
+          "platform": "Pandora",
+          "url": "https://www.pandora.com/AL:67484145"
+        },
+        {
+          "platform": "Boomplay",
+          "url": "https://www.boomplay.com/albums/133720962"
+        },
+        {
+          "platform": "QQ Music",
+          "url": "https://y.qq.com/n/ryqq_v2/albumDetail/94826608"
+        }
+      ],
+      "date": "2026-06-26",
+      "blurb": "With thirteen tracks bookended by dub, Lullabies For Earthquakes is an aural road movie across the globe.\n\nFrom the Poe-quoting brass of The Raven to the spaghetti western desert of The Crooked Hand, the album moves through Nordic folklore, French and Swedish poetry, poker tables without winners and post-apocalyptic deserts without ever losing the thread.\n\nIt's an album about the immovable and the fleeting, stone monuments and passing spirits, ancient things and the modern hands that reshape them. Traditional folk instruments tangle with synths, tabla shuffles meet abyssal doom, and film scores sit comfortably beside witchy folk melodies.\n\nRestless, cinematic, and quietly reverent, it's music for the calm before, during, and after the storm."
+    },
+    {
+      "name": "Sonic Flow Part I",
+      "image": "gfx/cover_7c0c.png",
+      "artist": "Vadoro",
+      "type": "Album",
+      "streaming": [
+        {
+          "platform": "Bandcamp",
+          "url": "https://vadoro.bandcamp.com/album/sonic-flow-part-i"
+        },
+        {
+          "platform": "Apple Music",
+          "url": "https://music.apple.com/us/album/sonic-flow-pt-i/1818590869"
+        },
+        {
+          "platform": "YouTube Music",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_nEz2TAH2fsj9apVzNJvpB7aMjHIOUlvBY"
+        },
+        {
+          "platform": "QQ Music",
+          "url": "https://y.qq.com/n/ryqq_v2/albumDetail/68597339"
+        },
+        {
+          "platform": "Spotify",
+          "url": "https://open.spotify.com/album/5QCZ1cugHyAihEdsiQ7gGf"
+        },
+        {
+          "platform": "Amazon Music",
+          "url": "https://music.amazon.com/albums/B0FBX8T7LQ"
+        },
+        {
+          "platform": "Audiomack",
+          "url": "https://audiomack.com/vadoromusic/album/sonic-flow-pt-i"
+        },
+        {
+          "platform": "Tidal",
+          "url": "https://listen.tidal.com/album/440137604"
+        },
+        {
+          "platform": "Pandora",
+          "url": "https://www.pandora.com/AL:49163862"
+        },
+        {
+          "platform": "Boomplay",
+          "url": "https://www.boomplay.com/albums/111681299"
+        }
+      ],
+      "date": "2025-06-03",
+      "blurb": "Join the Sonic Flow!\n\nAcross 14 tracks, Vadoro's Sonic Flow Part I blends Amapiano foundations with bold genre infusions: Soul, Moombahton, Alt Pop, Jersey Club, Azonto, Rnb, Ambient, Dubstep, and even Horror Soundtrack.\n\nEach song is fully realized, sitting right in that sweet spot between \"Ah yeah, this is that good old school stuff\" and \"Damn what is THIS!?\". 20+ years of beatcrafting experience and soundscape architecture leads to one properly good house style meal. Lyrics are equally polished to a sheen, not just English, but bilingual, trilingual, cunnilingual even. This is house music - but not your momma's house. This is a whole new house. Built from scratch. Soundproofed with intent. Every corner reinforced with bass, emotion, and sly hooks. Wolf-proof, if you will.\n\nFrom the cheeky nursery rhyme flirtation of Itty Bitty Bite, to the bouncing dembow swagger of Mongoose Riddim, to the streetlight-lit brass gospel pop of Angels Got Horns Too, and the epic ocean-deep surrender of Into Your Infinity, with just a pinch of Swedish melancholy to keep things interesting. This debut isn’t just an introduction - it’s a foundation. The start of something deeper, weirder, dancier.\n\nThere’s more coming - and not just Sonic Flow Part II..."
+    },
+    {
+      "name": "Sonic Flow Part II",
+      "hero": true,
+      "image": "gfx/cover_54ee.png",
+      "artist": "Vadoro",
+      "type": "Album",
+      "streaming": [
+        {
+          "platform": "Bandcamp",
+          "url": "https://vadoro.bandcamp.com/album/sonic-flow-part-ii"
+        },
+        {
+          "platform": "Spotify",
+          "url": "https://open.spotify.com/album/3jAewbKrCA4CVAzoujm2Ur"
+        },
+        {
+          "platform": "Apple Music",
+          "url": "https://music.apple.com/us/album/sonic-flow-part-ii/6771079891"
+        },
+        {
+          "platform": "QQ Music",
+          "url": "https://y.qq.com/n/ryqq_v2/albumDetail/92585785"
+        },
+        {
+          "platform": "Audiomack",
+          "url": "https://audiomack.com/vadoromusic/album/sonic-flow-part-ii"
+        },
+        {
+          "platform": "YouTube Music",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_mSXwDCT6XsKnJklZDiwfQh2nK2JbHB2Fg"
+        },
+        {
+          "platform": "Tidal",
+          "url": "https://listen.tidal.com/album/526300845"
+        },
+        {
+          "platform": "Amazon Music",
+          "url": "https://music.amazon.com/albums/B0H2BV1VQX"
+        },
+        {
+          "platform": "Boomplay",
+          "url": "https://www.boomplay.com/albums/111681299"
+        },
+        {
+          "platform": "Pandora",
+          "url": "https://www.pandora.com/AL:66610878"
+        }
+      ],
+      "date": "2026-05-29",
+      "blurb": "The house is still standing. Sonic Flow Part II knows what it is now.\n\nLess experimental, more assured - thirteen tracks that trade some of the debut's genre chaos for deeper roots and a steadier pulse. Amapiano anchors it, Afro House lifts it, and somewhere in between there's dancehall swagger, Afro Folk warmth and a salsa detour. It's found the sonic flow basically. And it's got Sonic Flow - that's track 4.\n\nThe slow soul sits where ambient used to be. The chillout tracks hit different when the tracks around them are built this confidently. From the opening strut of Crushing It to the measured power of Amandla, SF2 doesn't need to prove the house exists. It just invites you in and turns up the bass.\n\nMore coming. There always is."
+    },
+    {
+      "name": "Chillout Sessions I",
+      "image": "gfx/cover_6e27.png",
+      "artist": "Ingen Annan",
+      "type": "EP",
+      "streaming": [
+        {
+          "platform": "Bandcamp",
+          "url": "https://ingenannan.bandcamp.com/album/chillout-sessions-i"
+        },
+        {
+          "platform": "YouTube Music",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_kpWgy8dT7AFCpUwh8rJerJUwzLfqyRhTk"
+        },
+        {
+          "platform": "QQ Music",
+          "url": "https://y.qq.com/n/ryqq_v2/albumDetail/63970029"
+        },
+        {
+          "platform": "Spotify",
+          "url": "https://open.spotify.com/album/3x7gNuJCB1hH8hbZzQjh2K"
+        },
+        {
+          "platform": "Deezer",
+          "url": "https://www.deezer.com/album/724291501"
+        },
+        {
+          "platform": "Apple Music",
+          "url": "https://music.apple.com/us/album/chillout-sessions-i/1800910715"
+        },
+        {
+          "platform": "Tidal",
+          "url": "https://listen.tidal.com/album/422712456"
+        },
+        {
+          "platform": "Boomplay",
+          "url": "https://www.boomplay.com/albums/107542661"
+        },
+        {
+          "platform": "Pandora",
+          "url": "https://www.pandora.com/AL:45705015"
+        }
+      ],
+      "date": "2025-03-08",
+      "blurb": "Chillout Sessions I takes tracks from Ingen Annan Mäktar (2024) and finds what was always underneath - melody, texture, atmosphere, the thing that was driving the original before the breaks hit.\n\nNot just slower versions. Boiled down essences become flavor for something new.\n\nThere's also two previously unreleased songs, not unworthy in any way, just late to the party."
+    }
+  ],
+  "about": "Real Life Music Sweden is an independent music label, the brainchild of Janne 'Jay' Pettersen. Established somewhere around 1997 in Örebro, Sweden. Printed t-shirts and everything. Might do so again 30 years on. If you'd like to show your support before then, share some links with others and some love on YouTube. /J\n\n© 2018–2026 Real Life Music Sweden. All rights reserved.",
+  "assets": [
+    {
+      "name": "hero sfp2",
+      "image": "gfx/hero_sfp2.png"
+    },
+    {
+      "name": "hero tiad",
+      "image": "gfx/hero_taid.png"
+    },
+    {
+      "name": "lfe emptybg",
+      "image": "gfx/hero_lfe.png"
+    },
+    {
+      "name": "rlm logo 2025 orng transp",
+      "image": "gfx/rlm_logo_main.png"
+    },
+    {
+      "name": "rlmgbg",
+      "image": "gfx/rlmgbg.png"
+    }
+  ]
+}

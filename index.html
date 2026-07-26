@@ -1,21 +1,1151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Independent and genre-bending music label releasing world fusion, dub, trip hop, afrohouse, amapiano, 
-  drum and bass, jungle and breakbeat">
-  <meta name="keywords" content="jinx, vadoro, ingen annan, noxi, starwyrm, world fusion, dub, trip hop, afrohouse, amapiano, drum and bass, 
-  jungle, breakbeat, independent music, sweden, new releases, real life music">
-  <title>Real Life Music Sweden</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: #000; }
-    body { display: flex; align-items: center; justify-content: center; }
-    p { color: #fff; font-family: sans-serif; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- file URLs resolve from here; /site/ locally, root when published. Must precede <style>. -->
+<base id="base">
+<script>document.getElementById('base').href = location.pathname === '/site' || location.pathname.startsWith('/site/') ? '/site/' : '/';</script>
+<title>Real Life Music</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Sans:wdth,wght@75,100..700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0e0e0e;
+  --surface:   #1a1a1a;
+  --border:    rgba(208,104,29,0.5);
+  --dborder:    rgba(208,104,29,0.2);
+  --tborder:    rgba(0,0,0,0);
+  --gold:      #c8922a;
+  --gold-dim:  #6b4e16;
+  --text:      #e8e4dc;
+  --text2:     #999;
+  --text3:     #555;
+  --font-disp: 'IBM Plex Sans', sans-serif;
+  --font-body: 'IBM Plex Mono', sans-serif;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+body {
+  background-image: url(gfx/rlmgbg.png);
+  background-repeat: no-repeat;
+  background-position: top 0 right 25%;
+  background-attachment: fixed;
+}
+
+/* ── hero ── */
+.hero {
+  position: relative;
+  height: 58vh;
+  min-height: 400px;
+  overflow: visible;
+  cursor: pointer;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+/* background-image is set by renderHero() */
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  -webkit-mask-image: linear-gradient(to bottom, black 66%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 66%, transparent 100%);
+}
+
+/* inner layout: text left, cover right, max 1280px centered */
+.hero-inner {
+  position: absolute;
+  inset: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+  top: 30px;
+  position: relative;
+}
+
+.hero-logo {
+  max-width: 80px;
+  object-fit: scale-down;
+}
+
+/* text block — remove padding-bottom, now on the wrapper */
+.hero-text {
+  padding-bottom: 0;
+  flex: none;
+  min-width: 0;
+}
+.hero-title {
+  font-family: var(--font-disp);
+  font-size: clamp(52px, 6.5vw, 96px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  color: var(--text);
+  text-transform: uppercase;
+  margin:-5px 0 0 -5px;
+}
+.hero-sub {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 12px;
+}
+/* cover — tilted, bleeds below hero */
+.hero-cover-wrap {
+  flex-shrink: 0;
+  width: clamp(250px, 22vw, 500px);
+  /* push it so bottom edge sits ~60px below hero bottom */
+  margin-bottom: -60px;
+  transform: rotate(7deg);
+  transform-origin: bottom center;
+  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.7));
+  z-index: 2;
+  position: relative;
+}
+.hero-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+.hero-cover-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--border);
+}
+.hero-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text3);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── main content ── */
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 96px 56px 120px;
+}
+
+/* ── section labels ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── artist cards ── */
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.artist-card {
+  border: 2px solid var(--tborder);
+  /* background: var(--surface); */
+  cursor: pointer;
+}
+
+.artist-card-logo {
+  width: 100%;
+  aspect-ratio: auto;
+  object-fit:scale-down;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center center; /* Zooms evenly from the center */
+}
+.artist-card:hover .artist-card-logo { transform: scale(1.1); }
+.artist-card-logo-placeholder {
+  width: 100%;
+  aspect-ratio: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.artist-card-body {
+  position:relative;
+  z-index: 0;
+}
+.artist-card-body::before {
+  background-color: var(--tborder);
+  content: "";
+  position: absolute;
+  /* Shrinks the background 10px inward from all sides */
+  inset: 22px 8px 17px 0px; 
+  backdrop-filter: blur(8px); /* Optional: extra soft misting behind */
+  border-radius: 8px;
+  box-shadow: 0 0 15px 12px var(--tborder);
+  z-index: -1;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+.artist-card:hover .artist-card-body::before {
+  background-color: var(--dborder); /* Box fill color or glass effect */
+  backdrop-filter: blur(8px); /* Optional: extra soft misting behind */
+  box-shadow: 0 0 15px 12px var(--dborder);
+}
+
+.artist-card-name {
+  font-family: var(--font-disp);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.artist-card-genres, .artist-card-rel_no {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+/* ── about ── */
+.about {
+  max-width: 640px;
+}
+.about-text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text2);
+  white-space: pre-line;
+}
+
+/* ── float pair ── */
+.float-pair {
+  position: fixed;
+  left: max(-56px, calc((100vw - 1280px) / 2 + -56px));
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+.float-btn {
+  width: 36px;
+  height: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.float-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+.float-btn-back { color: var(--gold); border-color: var(--gold-dim); }
+.float-btn-back:hover { color: var(--text); border-color: var(--border); }
+
+/* ── nav overlay — dropdown from float pair ── */
+.nav-overlay {
+  position: fixed;
+  left: max(-56px, calc((100vw - 1280px) / 2 + -56px));
+  top: 102px; /* below the two buttons: 24px top + 36+6+36px buttons + gap */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+}
+.nav-overlay.open { display: flex; }
+.nav-overlay-item {
+  font-family: var(--font-disp);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--text2);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-overlay-item:last-child { border-bottom: none; }
+.nav-overlay-item:hover { color: var(--gold); background: var(--bg); }
+
+/* ── sub-pages ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* artist page */
+.artist-page-hero {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+.artist-page-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--border);
+}
+.artist-page-img-placeholder {
+  width: 200px;
+  height: 200px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+.artist-page-name {
+  font-family: var(--font-disp);
+  font-size: clamp(40px, 6vw, 72px);
+  letter-spacing: 0.04em;
+  line-height: 0.9;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.artist-page-info { flex: 1; min-width: 0; }
+.artist-page-genres {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* socials — text buttons, artist meta row only */
+.artist-page-socials {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.social-link {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+.social-link:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+.artist-page-bio {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text2);
+  max-width: 560px;
+  white-space: pre-line
+}
+
+.releases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+.release-card {
+  cursor: pointer;
+  border: 2px solid var(--tborder);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center center; /* Zooms evenly from the center */
+}
+
+.release-card:hover { transform: scale(1.1); }
+.release-card-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: var(--border);
+}
+.release-card-body { padding: 10px 12px 12px; }
+.release-card-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.release-card-meta {
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 300;
+}
+
+/* release page */
+.release-page-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+.release-page-img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--border);
+}
+.release-page-img-placeholder {
+  width: 280px;
+  height: 280px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+.release-page-info { flex: 1; min-width: 0; }
+.release-page-title {
+  font-family: var(--font-disp);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  color: var(--text);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+/* meta rows: label content left, extras right */
+.artist-page-meta-row,
+.release-page-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+}
+.artist-page-meta-row  { margin-bottom: 24px; }
+.release-page-meta-row { margin-bottom: 28px; }
+.release-page-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.release-page-artist {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  transition: color 0.12s;
+}
+.release-page-artist:hover { color: var(--text); }
+.release-page-metabit {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text2);
+}
+/* streaming — logo tiles under the release blurb */
+.streaming-label { margin-top: 28px; }
+.streaming-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.streaming-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 120px;
+  padding-top: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center center; /* Zooms evenly from the center */
+}
+.streaming-link:hover { transform: scale(1.1); }
+/* source art is 750x250 — width drives it, height follows */
+.streaming-link-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+.streaming-link:hover .streaming-link-logo { opacity: 1; }
+.streaming-link-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.3;
+  color: var(--text2);
+  transition: color 0.15s;
+}
+.streaming-link:hover .streaming-link-label { color: var(--gold); }
+
+.release-page-blurb {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text);
+  max-width: 560px;
+  white-space: pre-line;
+}
+
+/* back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  cursor: pointer;
+  margin-bottom: 36px;
+  transition: color 0.12s;
+}
+.back-link:hover { color: var(--gold); }
+
+/* ── mobile ── */
+@media (max-width: 640px) {
+  .hero { height: 44vh; min-height: 280px; }
+  .hero-inner { padding: 0 20px; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 0; }
+  /* pulled out of flow so the text can sit over it */
+  .hero-cover-wrap {
+    position: absolute;
+    top: 100px;
+    right: -40px;
+    z-index: 0;
+  }
+  .hero-text { padding-bottom: 24px; z-index:1;}
+  .hero-title { font-size: 38px; }
+
+  .main { padding: 40px 16px 100px; }
+
+  .artists-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .artist-card {
+    display: flex;
+    flex-direction: row;
+  }
+  .artist-card-logo,
+  .artist-card-logo-placeholder {
+    width: 140px;
+    height: 80px;
+    margin-top: 10px;
+    aspect-ratio: auto;
+    flex-shrink: 0;
+  }
+  .artist-card-body {
+    padding: 12px 0px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .artist-card-name { font-size: 18px; }
+
+  .artist-page-hero { flex-direction: column; gap: 20px; }
+  .artist-page-img,
+  .artist-page-img-placeholder { width: 100%; height: auto; aspect-ratio: 1; }
+
+  .release-page-layout { flex-direction: column; gap: 24px; }
+  .release-page-img,
+  .release-page-img-placeholder { width: 100%; height: auto; aspect-ratio: 1; }
+
+  .float-pair { left: 4px; top: 6px; }
+  .float-btn { width: 42px; height: 42px; font-size: 18px; }
+
+  .nav-overlay {
+    position: fixed;
+    left: max(4px, calc((100vw - 1280px) / 2 + 4px));
+  }
+
+}
+</style>
 </head>
 <body>
-  <p>Coming soon</p>
+
+<!-- start page -->
+<div id="page-home" class="page active">
+  <div class="hero" id="hero" onclick="heroClick()">
+    <!-- bg image: full bleed atmospheric, always present -->
+    <div class="hero-bg" id="hero-bg"></div>
+      <div class="hero-inner">
+        <!-- text: bottom left -->
+        <div class="hero-left">
+          <img class="hero-logo" id="hero-logo" src="gfx/rlm_logo_main.png" alt="Real Life Music"/>
+          <div class="hero-text" id="hero-text"></div>
+        </div>
+        <!-- cover: tilted, bleeds below -->
+        <div class="hero-cover-wrap" id="hero-cover-wrap"></div>
+      </div>
+  </div>
+
+  <div class="main">
+    <div class="section-label">Artists</div>
+    <div class="artists-grid" id="artists-grid"></div>
+
+    <div class="section-label">About</div>
+    <div class="about">
+      <p class="about-text" id="about-text"></p>
+    </div>
+  </div>
+</div>
+
+<!-- artist page -->
+<div id="page-artist" class="page">
+  <div class="main">
+    <div class="artist-page-hero" id="artist-hero"></div>
+    <div class="section-label">Releases</div>
+    <div class="releases-grid" id="artist-releases"></div>
+  </div>
+</div>
+
+<!-- release page -->
+<div id="page-release" class="page">
+  <div class="main">
+    <div class="release-page-layout" id="release-layout"></div>
+  </div>
+</div>
+
+<!-- nav overlay -->
+<div class="nav-overlay" id="nav-overlay">
+  <div id="overlay-items"></div>
+</div>
+
+<!-- arrow symbol -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="arrow" viewBox="0 0 48 48">
+      <path d="M24 8 L38 22 L30 22 L30 30 L18 30 L18 22 L10 22 Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- float pair -->
+<div class="float-pair">
+  <button class="float-btn" onclick="showHome()" title="Home">⌂</button>
+  <button class="float-btn" onclick="openOverlay()" data-burger title="Menu">☰</button>
+  <button class="float-btn float-btn-back" id="float-back" title="Back" style="display:none">
+    <svg width="18" height="18" style="transform:rotate(270deg)"><use href="#arrow"/></svg>
+  </button>
+</div>
+
+<script>
+// ── editorial constants ──────────────────────────────────────────────────────
+const ABOUT = 'Real Life Music Sweden is an independent label releasing music across Dub, Jungle, Amapiano, Downtempo, and beyond. Home of Jinx, Ingen Annan, and Vadoro.';
+
+// ── helpers ──────────────────────────────────────────────────────────────────
+
+const ROMAN = {ix:'9',viii:'8',vii:'7',vi:'6',iv:'4',iii:'3',ii:'2',v:'5',i:'1'};
+
+function acro(str) {
+  const words = str.trim().split(/\s+/);
+  const last = words[words.length - 1].toLowerCase();
+  if (ROMAN[last]) words[words.length - 1] = ROMAN[last];
+  return words
+    .map(w => w.replace(/[^a-zA-Z0-9]/g, ''))
+    .filter(w => w.length > 0)
+    .map(w => w[0])
+    .join('')
+    .toLowerCase();
+}
+
+// URL slug from a title: full words, diacritics folded (å→a), spaces→_, rest dropped.
+// Used for artist and release route URLs; acro() stays for hero art only.
+function slug(str) {
+  return str
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/\s+/g, '_')
+    .replace(/[^a-z0-9_]/g, '')
+    .replace(/_+/g, '_')
+    .replace(/^_|_$/g, '');
+}
+
+// ── socials block — artist meta row, text only ───────────────────────────────
+// accepts [{platform, url}], ["Name", …] or a bare string
+function buildSocials(socials) {
+  const wrap = document.createElement('div');
+  wrap.className = 'artist-page-socials';
+
+  const list = Array.isArray(socials) ? socials : [socials];
+  list.forEach(entry => {
+    const s = typeof entry === 'object' ? entry : { platform: entry, url: null };
+    const a = document.createElement('a');
+    a.className = 'social-link';
+    a.textContent = s.platform;
+    if (s.url) { a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; }
+    wrap.appendChild(a);
+  });
+
+  return wrap;
+}
+
+// ── streaming block — release page, logo above label ─────────────────────────
+// "Apple Music" → assets/sl_apple_music.png
+function streamingLogoSrc(platform) {
+  return 'assets/sl_' + platform.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '.png';
+}
+
+// accepts [{platform, url}] or a comma-separated string
+function buildStreamingLinks(streaming) {
+  const wrap = document.createElement('div');
+  wrap.className = 'streaming-links';
+
+  const list = Array.isArray(streaming)
+    ? streaming
+    : streaming.split(',').map(s => ({ platform: s.trim(), url: null }));
+
+  list.forEach(entry => {
+    const p = typeof entry === 'object' ? entry : { platform: entry, url: null };
+    const a = document.createElement('a');
+    a.className = 'streaming-link';
+    if (p.url) { a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; }
+
+    const logo = document.createElement('img');
+    logo.className = 'streaming-link-logo';
+    logo.src = streamingLogoSrc(p.platform);
+    logo.alt = '';
+    logo.onerror = () => logo.remove(); // no logo file yet → label stands alone
+    a.appendChild(logo);
+
+    const label = document.createElement('span');
+    label.className = 'streaming-link-label';
+    label.textContent = p.platform;
+    a.appendChild(label);
+
+    wrap.appendChild(a);
+  });
+
+  return wrap;
+}
+
+// ── state ────────────────────────────────────────────────────────────────────
+let DATA = null;
+
+// The mount path the site is served under: "/site/" locally, "/" published.
+// Pinned by the <base> tag, so every relative asset already resolves against it;
+// we reuse it to build and read route URLs.
+const BASE_PATH = new URL(document.baseURI).pathname;
+
+// ── boot ─────────────────────────────────────────────────────────────────────
+async function boot() {
+  document.getElementById('float-back').onclick = () => history.back();
+  try {
+    const r = await fetch('data.json');
+    DATA = await r.json();
+  } catch (e) {
+    console.error('Could not load data.json', e);
+    return;
+  }
+  renderHome();      // build home content once; stays hidden if we route elsewhere
+  routeFromURL();    // show the page the current URL points at
+}
+
+// Read the path (minus BASE_PATH) and show the matching page. No pushState —
+// used on first load and on popstate, where the URL is already correct.
+function routeFromURL() {
+  let path = location.pathname;
+  if (path.startsWith(BASE_PATH)) path = path.slice(BASE_PATH.length);
+  path = path.replace(/\.html$/, '');   // .html is decorative — strip before decoding
+  const [kind, key] = path.split('/');
+
+  if (kind === 'artist') {
+    const a = (DATA.artists || []).find(x => slug(x.name) === key);
+    if (a) { showArtist(a, false); return; }
+  }
+  if (kind === 'release') {
+    const r = (DATA.releases || []).find(x => slug(x.name) === key);
+    if (r) { showRelease(r, false); return; }
+  }
+  showHome(false);
+}
+
+// Browser back/forward: re-render for the new URL, never push.
+window.addEventListener('popstate', routeFromURL);
+
+// ── home ─────────────────────────────────────────────────────────────────────
+function renderHome() {
+  renderHero();
+  renderArtistCards();
+  document.getElementById('about-text').textContent = DATA.about || ABOUT;
+}
+
+function renderHero() {
+  const release   = (DATA.releases || []).find(r => r.hero);
+  const coverWrap = document.getElementById('hero-cover-wrap');
+  const text      = document.getElementById('hero-text');
+  const heroBg    = document.getElementById('hero-bg');
+
+  coverWrap.innerHTML = '';
+  text.innerHTML = '';
+
+  if (!release) {
+    text.innerHTML = '<div class="hero-empty">No featured release</div>';
+    return;
+  }
+  heroBg.style.backgroundImage = 'url(gfx/hero_' +acro(release.name) + '.png)';
+
+  // cover — tilted square, bleeds below hero
+  if (release.image) {
+    const img = document.createElement('img');
+    img.src = release.image;
+    img.className = 'hero-cover';
+    img.alt = release.name;
+    coverWrap.appendChild(img);
+  } else {
+    const ph = document.createElement('div');
+    ph.className = 'hero-cover-placeholder';
+    coverWrap.appendChild(ph);
+  }
+
+  // text — title + artist/year
+  const title = document.createElement('div');
+  title.className = 'hero-title';
+  title.textContent = release.name;
+
+  const sub = document.createElement('div');
+  sub.className = 'hero-sub';
+  const year = release.date ? release.date.slice(0, 4) : '';
+  sub.textContent = [release.artist, year].filter(Boolean).join(' · ');
+
+  text.appendChild(title);
+  text.appendChild(sub);
+}
+
+function heroClick() {
+  const release = (DATA.releases || []).find(r => r.hero);
+  if (release) showRelease(release);
+}
+
+function renderArtistCards() {
+  const grid = document.getElementById('artists-grid');
+  grid.innerHTML = '';
+
+  (DATA.artists || []).forEach(artist => {
+    const card = document.createElement('div');
+    card.className = 'artist-card';
+    card.onclick = () => showArtist(artist);
+
+    if (artist.logo) {
+      const img = document.createElement('img');
+      img.src = artist.logo;
+      img.className = 'artist-card-logo';
+      img.alt = artist.name;
+      card.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'artist-card-logo-placeholder';
+      card.appendChild(ph);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'artist-card-body';
+
+    const name = document.createElement('div');
+    name.className = 'artist-card-name';
+    name.textContent = artist.name;
+    body.appendChild(name);
+
+    if (artist.genres) {
+      const genres = document.createElement('div');
+      genres.className = 'artist-card-genres';
+      genres.textContent = Array.isArray(artist.genres)
+        ? artist.genres.join(', ')
+        : artist.genres;
+      body.appendChild(genres);
+    }
+
+    const n = (DATA.releases || []).filter(r => r.artist === artist.name).length;
+    const rel_no = document.createElement('div');
+    rel_no.className = 'artist-card-rel_no';
+    rel_no.textContent = n + (n === 1 ? ' release' : ' releases');
+    body.appendChild(rel_no);
+
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+}
+
+// ── artist page ───────────────────────────────────────────────────────────────
+function showArtist(artist, push = true) {
+  setPage('page-artist');
+  setBack(true);
+  if (push) history.pushState(null, '', BASE_PATH + 'artist/' + slug(artist.name) + '.html');
+
+  const hero = document.getElementById('artist-hero');
+  hero.innerHTML = '';
+
+  if (artist.image) {
+    const img = document.createElement('img');
+    img.src = artist.image;
+    img.className = 'artist-page-img';
+    img.alt = artist.name;
+    hero.appendChild(img);
+  } else {
+    const ph = document.createElement('div');
+    ph.className = 'artist-page-img-placeholder';
+    hero.appendChild(ph);
+  }
+
+  const info = document.createElement('div');
+  info.className = 'artist-page-info';
+
+  const name = document.createElement('div');
+  name.className = 'artist-page-name';
+  name.textContent = artist.name;
+  info.appendChild(name);
+
+  // meta row: genres left, socials right
+  const metaRow = document.createElement('div');
+  metaRow.className = 'artist-page-meta-row';
+
+  const genres = document.createElement('div');
+  genres.className = 'artist-page-genres';
+  genres.textContent = artist.genres
+    ? (Array.isArray(artist.genres) ? artist.genres.join(', ') : artist.genres)
+    : '';
+  metaRow.appendChild(genres);
+
+  if (artist.socials && artist.socials.length) {
+    metaRow.appendChild(buildSocials(artist.socials));
+  }
+
+  info.appendChild(metaRow);
+
+  if (artist.bio) {
+    const bio = document.createElement('p');
+    bio.className = 'artist-page-bio';
+    bio.textContent = artist.bio;
+    info.appendChild(bio);
+  }
+
+  hero.appendChild(info);
+
+  // releases for this artist
+  const relGrid = document.getElementById('artist-releases');
+  relGrid.innerHTML = '';
+  const artistReleases = (DATA.releases || [])
+    .filter(r => r.artist === artist.name)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  artistReleases.forEach(rel => {
+    const card = document.createElement('div');
+    card.className = 'release-card';
+    card.onclick = () => showRelease(rel);
+
+    if (rel.image) {
+      const img = document.createElement('img');
+      img.src = rel.image;
+      img.className = 'release-card-img';
+      img.alt = rel.name;
+      card.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'release-card-img';
+      card.appendChild(ph);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'release-card-body';
+
+    const rname = document.createElement('div');
+    rname.className = 'release-card-name';
+    rname.textContent = rel.name;
+    body.appendChild(rname);
+
+    const meta = document.createElement('div');
+    meta.className = 'release-card-meta';
+    const year = rel.date ? rel.date.slice(0, 4) : '';
+    meta.textContent = [rel.type, year].filter(Boolean).join(' · ');
+    body.appendChild(meta);
+
+    card.appendChild(body);
+    relGrid.appendChild(card);
+  });
+
+  window.scrollTo(0, 0);
+}
+
+// ── release page ──────────────────────────────────────────────────────────────
+const RELEASE_BLURB_TEMP = 'Lullabies For Earthquakes is a debut album that moves through dub, downtempo, and world fusion — slow grooves built around field recordings, live percussion, and deep bass. Recorded over three years in Stockholm. None of this is actually true, this is just a placeholder.';
+
+function showRelease(release, push = true) {
+  setPage('page-release');
+  setBack(true);
+  if (push) history.pushState(null, '', BASE_PATH + 'release/' + slug(release.name) + '.html');
+
+  const layout = document.getElementById('release-layout');
+  layout.innerHTML = '';
+
+  // artwork
+  if (release.image) {
+    const img = document.createElement('img');
+    img.src = release.image;
+    img.className = 'release-page-img';
+    img.alt = release.name;
+    layout.appendChild(img);
+  } else {
+    const ph = document.createElement('div');
+    ph.className = 'release-page-img-placeholder';
+    layout.appendChild(ph);
+  }
+
+  const info = document.createElement('div');
+  info.className = 'release-page-info';
+
+  // title
+  const title = document.createElement('div');
+  title.className = 'release-page-title';
+  title.textContent = release.name;
+  info.appendChild(title);
+
+  // meta row: artist · year · type on left, streaming buttons on right
+  const metaRow = document.createElement('div');
+  metaRow.className = 'release-page-meta-row';
+
+  const metaLeft = document.createElement('div');
+  metaLeft.className = 'release-page-meta-left';
+
+  if (release.artist) {
+    const artistEl = document.createElement('span');
+    artistEl.className = 'release-page-artist';
+    artistEl.textContent = release.artist;
+    artistEl.onclick = () => {
+      const a = (DATA.artists || []).find(x => x.name === release.artist);
+      if (a) showArtist(a);
+    };
+    metaLeft.appendChild(artistEl);
+  }
+
+  [release.date ? release.date.slice(0, 4) : null, release.type].forEach(bit => {
+    if (!bit) return;
+    const span = document.createElement('span');
+    span.className = 'release-page-metabit';
+    span.textContent = bit;
+    metaLeft.appendChild(span);
+  });
+
+  metaRow.appendChild(metaLeft);
+  info.appendChild(metaRow);
+
+  // blurb
+  const desc = document.createElement('p');
+  desc.className = 'release-page-blurb';
+  desc.textContent = release.blurb || RELEASE_BLURB_TEMP;
+  info.appendChild(desc);
+
+  // streaming — below blurb
+  if (release.streaming) {
+    const streamLabel = document.createElement('div');
+    streamLabel.className = 'section-label streaming-label';
+    streamLabel.textContent = 'Stream now';
+    info.appendChild(streamLabel);
+
+    info.appendChild(buildStreamingLinks(release.streaming));
+  }
+
+  layout.appendChild(info);
+  window.scrollTo(0, 0);
+}
+
+// ── nav overlay ───────────────────────────────────────────────────────────────
+function openOverlay() {
+  const overlay = document.getElementById('nav-overlay');
+  const items   = document.getElementById('overlay-items');
+  items.innerHTML = '';
+
+  // home
+  const home = document.createElement('div');
+  home.className = 'nav-overlay-item';
+  home.textContent = 'Home';
+  home.onclick = () => { closeOverlay(); showHome(); };
+  items.appendChild(home);
+
+  // one item per artist
+  (DATA.artists || []).forEach(artist => {
+    const item = document.createElement('div');
+    item.className = 'nav-overlay-item';
+    item.textContent = artist.name;
+    item.onclick = () => { closeOverlay(); showArtist(artist); };
+    items.appendChild(item);
+  });
+
+  overlay.classList.add('open');
+
+  // close on outside click
+  setTimeout(() => {
+    document.addEventListener('click', outsideClose);
+  }, 0);
+}
+
+function outsideClose(e) {
+  const overlay = document.getElementById('nav-overlay');
+  const burger  = document.querySelector('.float-btn[data-burger]');
+  if (!overlay.contains(e.target) && e.target !== burger) {
+    closeOverlay();
+  }
+}
+
+function closeOverlay() {
+  document.getElementById('nav-overlay').classList.remove('open');
+  document.removeEventListener('click', outsideClose);
+}
+
+// ── routing ───────────────────────────────────────────────────────────────────
+function setPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function setBack(show) {
+  document.getElementById('float-back').style.display = show ? '' : 'none';
+}
+
+function showHome(push = true) {
+  setPage('page-home');
+  setBack(false);
+  if (push) history.pushState(null, '', BASE_PATH);
+  window.scrollTo(0, 0);
+}
+
+// ── go ────────────────────────────────────────────────────────────────────────
+boot();
+</script>
 </body>
 </html>
