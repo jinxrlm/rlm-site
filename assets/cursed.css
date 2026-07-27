@@ -1,0 +1,72 @@
+.cursed-word {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 0.62em;
+  height: 1.9em;
+  vertical-align: middle;
+}
+
+.cursed-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+/* outer — jitter translate only, owns no scale */
+.cursed-outer {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  animation: cursed-jitter var(--jd) var(--jp) infinite;
+}
+
+/* inner — scale only, owns no translate. ghost lives here */
+.cursed-inner {
+  display: block;
+  animation: cursed-sizeglitch var(--sd) var(--sp) infinite;
+}
+
+.cursed-inner::before {
+  content: attr(data-c);
+  position: absolute;
+  color: inherit;
+  opacity: 0;
+  animation: cursed-ghost var(--gd) var(--gp) infinite;
+}
+
+@keyframes cursed-jitter {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(var(--tx1), var(--ty1)); }
+  20%  { transform: translate(0, 0); }
+  35%  { transform: translate(var(--tx2), var(--ty2)); }
+  45%  { transform: translate(0, 0); }
+  60%  { transform: translate(var(--tx3), var(--ty3)); }
+  70%  { transform: translate(0, 0); }
+  85%  { transform: translate(var(--tx1), var(--ty2)); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes cursed-sizeglitch {
+  0%   { transform: scale(1); }
+  5%   { transform: scale(var(--gs1)); }
+  9%   { transform: scale(1); }
+  42%  { transform: scale(1); }
+  44%  { transform: scale(var(--gs2)); }
+  48%  { transform: scale(1); }
+  71%  { transform: scale(1); }
+  73%  { transform: scale(var(--gs1)); }
+  76%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cursed-ghost {
+  0%   { opacity: 0;    transform: translate(0, 0); }
+  15%  { opacity: 0;    transform: translate(0, 0); }
+  17%  { opacity: 0.45; transform: translate(var(--gx), var(--gy)); }
+  22%  { opacity: 0;    transform: translate(0, 0); }
+  55%  { opacity: 0;    transform: translate(0, 0); }
+  57%  { opacity: 0.3;  transform: translate(var(--gx2), var(--gy)); }
+  62%  { opacity: 0;    transform: translate(0, 0); }
+  100% { opacity: 0;    transform: translate(0, 0); }
+}
