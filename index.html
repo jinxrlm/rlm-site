@@ -240,16 +240,30 @@ body {
 }
 
 /* ── about ── */
-.about {
+.about, .footer {
   max-width: 640px;
 }
-.about-text {
+.about-text, .footer {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.8;
   color: var(--text2);
   white-space: pre-line;
 }
+.footer {
+  display: flex;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold);
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.footer img {
+  height: 38px;
+  float:left;
+  margin-right:16px;
+}
+
 
 /* ── float pair ── */
 .float-pair {
@@ -623,6 +637,11 @@ body {
     <div class="about">
       <p class="about-text" id="about-text"></p>
     </div>
+    <div class="footer">
+      <img src="assets/rlm_orng.png" alt="Small RLMS logo" />
+      <div>© 2018–2026 Real Life Music Sweden. All rights reserved.
+      Contact: hello (at) reallifemusic.org | pr (at) reallifemusic.org</div>
+    </div>
   </div>
 </div>
 
@@ -632,6 +651,10 @@ body {
     <div class="artist-page-hero" id="artist-hero"></div>
     <div class="section-label">Releases</div>
     <div class="releases-grid" id="artist-releases"></div>
+    <div class="footer">
+      <div>© 2018–2026 Real Life Music Sweden. All rights reserved.
+      Contact: hello (at) reallifemusic.org | pr (at) reallifemusic.org</div>
+    </div>
   </div>
 </div>
 
@@ -639,6 +662,10 @@ body {
 <div id="page-release" class="page">
   <div class="main">
     <div class="release-page-layout" id="release-layout"></div>
+    <div class="footer">
+      <div>© 2018–2026 Real Life Music Sweden. All rights reserved.
+      Contact: hello (at) reallifemusic.org | pr (at) reallifemusic.org</div>
+    </div>
   </div>
 </div>
 
