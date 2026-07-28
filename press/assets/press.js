@@ -1,28 +1,21 @@
-// press.js — shared presskit player logic (v3)
-// Exclusive single-track playback, error-driven fallback, verbose diagnostics.
+// press.js — shared presskit player logic
+// Exclusive single-track playback using direct src assignment
 
 (function () {
   'use strict';
 
-  // If your track URLs are already absolute (start with http), this is unused.
-  // If they're relative (e.g. "audio/track1.opus"), this gets prepended.
-  const MEDIA_BASE = 'https://media.reallifemusic.org';
-
-  let current = null;      // { num, name, opusUrl, m4aUrl, rowEl, btnEl, durationEl }
-  let usingFallback = false; // true once we've dropped to m4a for `current`
-  let playToken = 0;       // guards against play()/pause() race (AbortError)
-
+  let current = null; // { num, name, opusUrl, m4aUrl, rowEl, btnEl, durationEl }
   const audio = new Audio();
   audio.preload = 'none';
 
-  window.pressPlayer = { init };
+  // Determine container support upfront
+  // Safari / iOS often fails audio/ogg; check for M4A / AAC preference
+  const canPlayOpus = Boolean(
+    audio.canPlayType('audio/ogg; codecs=opus') ||
+    audio.canPlayType('audio/webm; codecs=opus')
+  );
 
-  function resolveUrl(url) {
-    if (!url) return null;
-    if (/^https?:\/\//i.test(url)) return url;
-    // avoid double slashes
-    return MEDIA_BASE.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
-  }
+  window.pressPlayer = { init };
 
   function init(tracks) {
     const bar = document.getElementById('player-bar');
@@ -33,36 +26,43 @@
     const timeCur = document.getElementById('player-time-cur');
     const timeTotal = document.getElementById('player-time-total');
 
-    if (!bar || !btnPlay || !scrubWrap) {
-      console.error('[press.js] missing required DOM nodes (player-bar / player-play / player-scrubber)');
-      return;
-    }
+    if (!bar || !btnPlay || !scrubWrap) return;
 
+    // ── Row Wireup ──────────────────────────────────────────────────────────
     tracks.forEach(t => {
       t.rowEl.addEventListener('click', () => toggle(t));
-      t.btnEl.addEventListener('click', e => { e.stopPropagation(); toggle(t); });
+      t.btnEl.addEventListener('click', e => {
+        e.stopPropagation();
+        toggle(t);
+      });
     });
 
+    // ── Central Controls ───────────────────────────────────────────────────
     btnPlay.addEventListener('click', () => {
       if (!current) return;
-      audio.paused ? safePlay() : audio.pause();
+      audio.paused ? playAudio() : audio.pause();
     });
 
     scrubWrap.addEventListener('click', e => {
       if (!audio.duration || isNaN(audio.duration)) return;
       const rect = scrubWrap.getBoundingClientRect();
-      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+      const pos = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pos * audio.duration;
     });
 
+    // ── Audio Engine Events ────────────────────────────────────────────────
     audio.addEventListener('timeupdate', () => {
       if (!audio.duration) return;
-      fill.style.width = ((audio.currentTime / audio.duration) * 100) + '%';
+      const pct = (audio.currentTime / audio.duration) * 100;
+      fill.style.width = pct + '%';
       timeCur.textContent = fmt(audio.currentTime);
     });
 
     audio.addEventListener('loadedmetadata', () => {
       timeTotal.textContent = fmt(audio.duration);
-      if (current && current.durationEl) current.durationEl.textContent = fmt(audio.duration);
+      if (current && current.durationEl) {
+        current.durationEl.textContent = fmt(audio.duration);
+      }
     });
 
     audio.addEventListener('play', () => {
@@ -77,7 +77,9 @@
     audio.addEventListener('pause', () => {
       btnPlay.textContent = '▶';
       btnPlay.classList.remove('active');
-      if (current) current.btnEl.textContent = '▶';
+      if (current) {
+        current.btnEl.textContent = '▶';
+      }
     });
 
     audio.addEventListener('ended', () => {
@@ -88,71 +90,48 @@
       }
     });
 
-    // ── the important part: real diagnostics + real fallback ──────────────
-    audio.addEventListener('error', () => {
-      const err = audio.error;
-      console.error('[press.js] media error', {
-        code: err && err.code,          // 1=ABORTED 2=NETWORK 3=DECODE 4=SRC_NOT_SUPPORTED
-        currentSrc: audio.currentSrc,
-        usingFallback
-      });
-
-      if (current && !usingFallback && current.m4aUrl) {
-        const m4a = resolveUrl(current.m4aUrl);
-        console.warn('[press.js] falling back to m4a:', m4a);
-        usingFallback = true;
-        audio.src = m4a;
-        audio.load();
-        safePlay();
-      } else {
-        console.error('[press.js] both sources failed for', current && current.name);
-        resetUI();
-      }
+    audio.addEventListener('error', (e) => {
+      console.error('Playback Error:', audio.error);
     });
 
+    // ── Core Toggle / Loader Logic ─────────────────────────────────────────
     function toggle(t) {
+      // 1. If clicking active track: toggle play/pause
       if (current === t) {
-        audio.paused ? safePlay() : audio.pause();
+        audio.paused ? playAudio() : audio.pause();
         return;
       }
 
+      // 2. Clear former track styling
       if (current) {
         current.rowEl.classList.remove('playing');
         current.btnEl.textContent = '▶';
       }
 
+      // 3. Set current track reference
       current = t;
-      usingFallback = false;
 
-      const opus = resolveUrl(t.opusUrl);
-      const canOpus = !!(opus && (audio.canPlayType('audio/ogg; codecs=opus') || audio.canPlayType('audio/webm; codecs=opus')));
-      const startUrl = canOpus ? opus : resolveUrl(t.m4aUrl);
-      usingFallback = !canOpus;
+      // 4. Select correct URL based on browser codec support
+      const targetUrl = (canPlayOpus && t.opusUrl) ? t.opusUrl : t.m4aUrl;
 
-      console.log('[press.js] loading track', t.name, '→', startUrl);
-
-      audio.src = startUrl;
+      // 5. Direct src assignment (bypasses <source> DOM bug)
+      audio.src = targetUrl;
       audio.load();
 
+      // 6. Update UI shell
       bar.classList.add('visible');
       barName.textContent = t.name;
       fill.style.width = '0%';
       timeCur.textContent = '0:00';
       timeTotal.textContent = '—';
 
-      safePlay();
+      playAudio();
     }
 
-    function safePlay() {
-      const myToken = ++playToken;
-      const p = audio.play();
-      if (p && p.catch) {
-        p.catch(err => {
-          // ignore AbortError caused by a newer play/pause/track-switch superseding this one
-          if (myToken !== playToken) return;
-          console.warn('[press.js] play() rejected:', err.name, err.message);
-        });
-      }
+    function playAudio() {
+      audio.play().catch(err => {
+        console.warn('Playback interrupted or blocked by user gesture policy:', err);
+      });
     }
 
     function resetUI() {
@@ -163,6 +142,7 @@
     }
   }
 
+  // ── Time Formatting ──────────────────────────────────────────────────────
   function fmt(secs) {
     if (!isFinite(secs) || isNaN(secs)) return '—';
     const m = Math.floor(secs / 60);
