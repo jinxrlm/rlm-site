@@ -113,7 +113,11 @@
       audio.appendChild(sourceOpus);
       audio.appendChild(sourceM4a);
       audio.load();
-      audio.play();
+
+      audio.play().catch(err => {
+        console.error(err);
+        console.log(audio.error);
+      });
 
       current = t;
       t.rowEl.classList.add('playing');
