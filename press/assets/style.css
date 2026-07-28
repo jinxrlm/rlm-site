@@ -13,8 +13,9 @@
   --gold-dim:  #e8c87a;
   --gold-bg:   #fdf6e8;
   --text:      #0e0e0e;
-  --text2:     #555;
-  --text3:     #999;
+  --text2:     #444;
+  --text3:     #888;
+  --text4:     #666;
   --font-disp: 'IBM Plex Sans', sans-serif;
   --font-body: 'IBM Plex Mono', monospace;
   --max:       1040px;
@@ -78,7 +79,7 @@ html, body {
   background: var(--border);
 }
 
-.release-cover-dl {
+.release-cover-dl, .artist-image-dl {
   display: block;
   font-size: 11px;
   font-weight: 400;
@@ -89,7 +90,27 @@ html, body {
   margin-top: 10px;
   transition: color 0.12s;
 }
-.release-cover-dl:hover { color: var(--gold); }
+.release-cover-dl:hover, .artist-image-dl:hover { color: var(--gold); }
+
+.artist-image-wrap {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  align-items:end;
+}
+
+.artist-image-dl {
+  display: flex;
+  width: 180px;
+}
+
+.artist-image {
+  display: flex;
+  width: 160px;
+}
+
 
 .release-info { padding-top: 4px; }
 
@@ -191,6 +212,8 @@ html, body {
 }
 .player-volume-wrap input {
   width: 100%;
+  accent-color: var(--text4);
+  cursor: pointer;
 }
 
 
