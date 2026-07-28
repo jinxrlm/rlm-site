@@ -8,6 +8,11 @@
 
   let current = null;   // { audio, row, btn } — the active track, or null
   const audio  = new Audio();
+
+  console.log(audio.canPlayType('audio/ogg; codecs="opus"'));
+  console.log(audio.canPlayType('audio/ogg; codecs=opus'));
+  console.log(audio.canPlayType('audio/mp4'));
+
   audio.preload = 'none';
 
   // ── public init ─────────────────────────────────────────────────────────────
@@ -93,30 +98,31 @@
         current.btnEl.textContent = '▶';
       }
 
-      // swap sources: Opus first, M4A fallback
-      audio.src = '';
-      audio.innerHTML = '';
+      // Remove any previous source
+      audio.removeAttribute('src');
 
-      // Safari picks M4A, everyone else picks Opus
-      // We set src directly and let the browser fail gracefully via error event
-      // Two-source approach via source elements requires resetting the element
+      while (audio.firstChild) {
+        audio.removeChild(audio.firstChild);
+      }
+
       const sourceOpus = document.createElement('source');
-      sourceOpus.src  = t.opusUrl;
+      sourceOpus.src = t.opusUrl;
       sourceOpus.type = 'audio/ogg; codecs=opus';
 
       const sourceM4a = document.createElement('source');
-      sourceM4a.src  = t.m4aUrl;
+      sourceM4a.src = t.m4aUrl;
       sourceM4a.type = 'audio/mp4';
 
-      // Swap sources cleanly
-      while (audio.firstChild) audio.removeChild(audio.firstChild);
       audio.appendChild(sourceOpus);
       audio.appendChild(sourceM4a);
+
       audio.load();
 
       audio.play().catch(err => {
         console.error(err);
         console.log(audio.error);
+        console.log(audio.currentSrc);
+        console.log(audio.src);
       });
 
       current = t;
