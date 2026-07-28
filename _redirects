@@ -1,1 +1,2 @@
-/* /index.html 200
+/press/*  /press/:splat  200
+/*        /index.html    200
