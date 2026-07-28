@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<base href="/press/">
 <title>Jinx — Lullabies For Earthquakes — Real Life Music Press</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="assets/style.css">
@@ -14,7 +13,7 @@
 
   <header class="press-header">
     <span class="press-label">Press Kit</span>
-    <a class="press-logo" href="https://reallifemusic.org">Real Life Music</a>
+    <a class="press-logo" href="https://reallifemusic.org"><img src="gfx/rlm_orng.png" alt="Visit the Real Life Music Sweden website"></a>
   </header>
 
   <section class="release-hero">
@@ -44,7 +43,10 @@
   </section>
 
   <section class="tracklist">
-    <div class="section-label">Stream previews - 64k Opus (Mac/iOS: 128k AAC). Not full quality; use the streaming links above for that.</div>
+    <div class="tracklist-header">
+      <div class="player-volume-wrap"><input type="range" id="player-volume" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"></div>
+      <div class="tracklist-label">Full length stream previews - 64k Opus (Mac/iOS: 128k AAC). Good enough for a quick listen, but for best quality use a streaming link above.</div>
+    </div>
     <div class="track-row" id="track-row-0">
       <span class="track-num">1</span>
       <button class="track-play-btn" id="track-btn-0">▶</button>

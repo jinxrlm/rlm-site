@@ -1,5 +1,5 @@
 // press.js — shared presskit player logic
-// Exclusive single-track playback using direct src assignment
+// Exclusive single-track playback with volume control
 
 (function () {
   'use strict';
@@ -9,7 +9,6 @@
   audio.preload = 'none';
 
   // Determine container support upfront
-  // Safari / iOS often fails audio/ogg; check for M4A / AAC preference
   const canPlayOpus = Boolean(
     audio.canPlayType('audio/ogg; codecs=opus') ||
     audio.canPlayType('audio/webm; codecs=opus')
@@ -25,8 +24,24 @@
     const fill = document.getElementById('player-fill');
     const timeCur = document.getElementById('player-time-cur');
     const timeTotal = document.getElementById('player-time-total');
+    const volInput = document.getElementById('player-volume');
 
     if (!bar || !btnPlay || !scrubWrap) return;
+
+    // ── Volume Setup & Initialization ─────────────────────────────────────────
+    // Load saved volume or default to 80% (0.8)
+    const savedVol = localStorage.getItem('pressPlayer_volume');
+    const defaultVol = savedVol !== null ? parseFloat(savedVol) : 0.8;
+
+    audio.volume = defaultVol;
+    if (volInput) {
+      volInput.value = defaultVol;
+      volInput.addEventListener('input', e => {
+        const val = parseFloat(e.target.value);
+        audio.volume = val;
+        localStorage.setItem('pressPlayer_volume', val);
+      });
+    }
 
     // ── Row Wireup ──────────────────────────────────────────────────────────
     tracks.forEach(t => {
@@ -90,35 +105,29 @@
       }
     });
 
-    audio.addEventListener('error', (e) => {
+    audio.addEventListener('error', () => {
       console.error('Playback Error:', audio.error);
     });
 
     // ── Core Toggle / Loader Logic ─────────────────────────────────────────
     function toggle(t) {
-      // 1. If clicking active track: toggle play/pause
       if (current === t) {
         audio.paused ? playAudio() : audio.pause();
         return;
       }
 
-      // 2. Clear former track styling
       if (current) {
         current.rowEl.classList.remove('playing');
         current.btnEl.textContent = '▶';
       }
 
-      // 3. Set current track reference
       current = t;
 
-      // 4. Select correct URL based on browser codec support
       const targetUrl = (canPlayOpus && t.opusUrl) ? t.opusUrl : t.m4aUrl;
 
-      // 5. Direct src assignment (bypasses <source> DOM bug)
       audio.src = targetUrl;
       audio.load();
 
-      // 6. Update UI shell
       bar.classList.add('visible');
       barName.textContent = t.name;
       fill.style.width = '0%';
@@ -130,7 +139,7 @@
 
     function playAudio() {
       audio.play().catch(err => {
-        console.warn('Playback interrupted or blocked by user gesture policy:', err);
+        console.warn('Playback interrupted or blocked by browser gesture policy:', err);
       });
     }
 
@@ -142,7 +151,7 @@
     }
   }
 
-  // ── Time Formatting ──────────────────────────────────────────────────────
+  // ── Helpers ──────────────────────────────────────────────────────────────
   function fmt(secs) {
     if (!isFinite(secs) || isNaN(secs)) return '—';
     const m = Math.floor(secs / 60);

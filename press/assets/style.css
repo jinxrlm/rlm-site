@@ -42,29 +42,24 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 0 20px;
+  padding: 26px 0 14px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 56px;
+  margin-bottom: 50px;
 }
 
 .press-label {
   font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 100;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text3);
 }
 
 .press-logo {
-  font-family: var(--font-disp);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-decoration: none;
+  display: flex;
 }
+.press-logo img { width: 65px; display: block; }
 
 /* ── release hero ── */
 .release-hero {
@@ -72,7 +67,7 @@ html, body {
   grid-template-columns: 280px 1fr;
   gap: 56px;
   align-items: start;
-  margin-bottom: 64px;
+  margin-bottom: 24px;
 }
 
 .release-cover {
@@ -163,7 +158,17 @@ html, body {
 .streaming-link:hover { border-color: var(--gold-dim); color: var(--gold); }
 
 /* ── section labels ── */
-.section-label {
+
+.tracklist-header {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+}
+
+.section-label, .tracklist-label {
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -173,6 +178,21 @@ html, body {
   border-bottom: 1px solid var(--border);
   margin-bottom: 20px;
 }
+.tracklist-label {
+  display: flex;
+  width: 70%;
+  border-bottom: none;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.player-volume-wrap {
+  display: flex;
+  width: 30%;
+}
+.player-volume-wrap input {
+  width: 100%;
+}
+
 
 /* ── tracklist + player ── */
 .tracklist {
